@@ -20,6 +20,7 @@ TRENDS: if you want to analyze trends, comment the block under 'Removing Trends'
 The program saves anomalies as NetCDF files.
 
 Input:
+  yr0    : first year of data
   tot    : total number of data in a single year (can be retrieved from dataset)
   ntot   : total number of data points in time (can be retrieved from dataset)
   nlat   : total number of data points in latitude (can be retrieved from dataset)
@@ -45,7 +46,7 @@ prefix='anom.variable.'        # choice of name. For example: anom.Temp.
 This block needs to be edited by the user. Read your input dataset and retrieve (or create)
 the Input variables described above.
 """
-
+yr0=
 ntot=
 nlat=
 nlon=
@@ -247,7 +248,7 @@ print("Formatting Data...")
 """
 Removing Feb 29th. This block averages Feb 28 and 29 in leap years. 
 """
-day,month,year=dates_daily(1979,1,1,ntot,0)
+day,month,year=dates_daily(yr0,1,1,ntot,0)
 id=np.where((month == 2.) & (day == 29.))
 id2=[x-1 for x in id]         # creating a list equal to (id-1) 
 prec2=0.5*(prec[id2,:,:]+prec[id,:,:]) 
