@@ -356,12 +356,13 @@ print("Calculating anomalies...")
 anomalies=np.zeros((ntot,nlat,nlon))
 for tt in range(0,ntot,tot):
     beg=tt
+    ned=beg+tot
     if ned <= ntot:
        ned=beg+tot
     if ned > ntot:
        ned=ntot
     anomalies[beg:ned,:,:]=prec[beg:ned,:,:,]-smoothed[0:ned-beg,:,:]
-    ned-beg,tot
+
 
 """
 Making sure missing values in the original input data are transmitted to the anomalies
@@ -389,6 +390,7 @@ to acurately describe the data
 #----- saving anomalies as individual years -----
 for tt in range(0,ntot,tot):
     beg=tt
+    neg=beg+tot
     if ned <= ntot:
        ned=beg+tot
     if ned > ntot:
